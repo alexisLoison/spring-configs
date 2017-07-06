@@ -1,20 +1,15 @@
-spring:
-  profiles:
-    active: cloud
-    
----
+server:
+  port: 1111
+  
 spring:
   profiles: docker
   rabbitmq:
     username: guest
     password: guest
     host: rabbitmq
-
-server:
-  port: 1111
-  
-
     
+
+
 eureka:
   client:
     serviceUrl:
