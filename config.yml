@@ -1,0 +1,40 @@
+spring:
+  profiles:
+    active: cloud
+    
+---
+
+spring:
+  profiles: docker
+  cloud:
+    config:
+      discovery:
+        enabled: true
+      server:
+        git:
+          uri: https://github.com/alexisLoison/spring-configs
+        health:
+          repositories:
+            students:
+              label: master
+            teachers:
+              label: master
+              
+server:
+  port: 8888
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: false
+    
+eureka:
+  instance:
+    hostname: config
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://eureka:8761/eureka/
